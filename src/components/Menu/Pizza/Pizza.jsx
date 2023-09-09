@@ -1,19 +1,19 @@
 import PropTypes from "prop-types";
 
-export default function Pizza(props) {
+export default function Pizza({ pizza }) {
   Pizza.propTypes = {
     pizza: PropTypes.object,
   };
 
-  if (props.pizza.soldOut) return null;
+  // if (pizza.soldOut) return null;
 
   return (
-    <li className="pizza">
-      <img src={props.pizza.photoName} alt={props.pizza.name} />
+    <li className={`pizza${pizza.soldOut ? " sold-out" : ""}`}>
+      <img src={pizza.photoName} alt={pizza.name} />
       <div>
-        <h3>{props.pizza.name}</h3>
-        <p>{props.pizza.ingredients}</p>
-        <span>{props.pizza.price}</span>
+        <h3>{pizza.name}</h3>
+        <p>{pizza.ingredients}</p>
+        <span>{pizza.soldOut ? "SOLD OUT" : pizza.price}</span>
       </div>
     </li>
   );
